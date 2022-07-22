@@ -11,7 +11,7 @@ The two processes I found I carried out a lot were the following:
 
 To solve this I wrote the following scripts:
 
-## Connect with Netcat & output result
+## Connect with Netcat to all open ports & output result
 
 ````
 
