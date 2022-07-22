@@ -35,7 +35,7 @@ for link in `cat $(pwd)/scans/tcp80/tcp_80_http_feroxbuster_dirbuster.txt | awk 
 
 ```
 
-## Curl all website pages found but exclude pages that retured a 403
+## Curl all website pages found but exclude pages that returned a 403
 
 ```
 
