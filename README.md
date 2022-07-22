@@ -1,4 +1,4 @@
-# OSCP Scripts
+# OSCP Bash Scripts
 
 As part of the OSCP I found there were some manual steps I always carried out so I have written some quick and dirty bash scripts to speed up this manual process.
 
