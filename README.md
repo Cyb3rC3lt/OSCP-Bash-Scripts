@@ -2,7 +2,7 @@
 
 As part of the OSCP I found there were some manual steps I always carried out so I have written some quick and dirty bash scripts to speed up this manual process.
 
-These scripts have a dependency on the outputs from Autorecon and **must be run from within the same folder your 'results' folder sits** in that Autorecon creates.
+These scripts have a dependency on the outputs from Autorecon and **must be run from within the same folder your 'results' folder sits** that Autorecon creates.
 
 The two processes I found I carried out a lot were the following:
 
