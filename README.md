@@ -1,7 +1,8 @@
 # OSCP Scripts
 
 As part of the OSCP I found there were some manual steps I always carried out so I have written some quick and dirty bash scripts to speed up this manual process.
-These scripts have a dependency on the outputs from Autorecon and should be run in the same folder as your 'results' folder Autorecon creates.
+
+These scripts have a dependency on the outputs from Autorecon and should be run from within the same folder your 'results' folder that Autorecon creates sits in.
 
 The two processes I found I carried out a lot were the following:
 
