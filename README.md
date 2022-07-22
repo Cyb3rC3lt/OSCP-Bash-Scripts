@@ -24,13 +24,13 @@ for port in `grep -E 'tcp\s+open' $(pwd)/results/${PWD##*/}/scans/_full_tcp_nmap
 
 ```
 
-## Curl all websites pages found on port 80 (change port to suit)
+## Curl all website pages found on port 80 (change port to suit)
 
 ```
 for link in `cat $(pwd)/results/${PWD##*/}/scans/tcp80/tcp_80_http_feroxbuster_dirbuster.txt | awk -F ' ' '{print $5}' | awk 'BEGIN { ORS = " " } { print }'`; do IP=${PWD##*/};RED='\033[0;31m';NC='\033[0m';echo ${RED}$link;echo ${NC}; curl -m 1 $link; printf "\n";printf "\n";printf "===============================";printf "\n"; done
 ```
 
-## Curl all websites pages found but exclude pages that retured a 403
+## Curl all website pages found but exclude pages that retured a 403
 
 ```
 for link in `grep -v 403 $(pwd)/results/${PWD##*/}/scans/tcp80/tcp_80_http_feroxbuster_dirbuster.txt | awk -F ' ' '{print $5}' | awk 'BEGIN { ORS = " " } { print }'`; do IP=${PWD##*/};RED='\033[0;31m';NC='\033[0m';echo ${RED}$link;echo ${NC}; curl -m 1 $link; printf "\n";printf "\n";printf "===============================";printf "\n"; done
