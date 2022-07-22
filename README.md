@@ -14,7 +14,9 @@ To solve this I wrote the following scripts:
 ## Netcat open port query
 
 ````
+
 for i in $(echo ${PWD##*/}|tr "," "\n"); do grep -E 'tcp\s+open' $(pwd)/scans/_full_tcp_nmap.txt | awk -F / '{print $1}' | awk 'BEGIN { ORS = "\n" } { print }' | xargs -i nc -w 3 -vn $i {}; done
+
 ````
 
 ## Curl all open ports
