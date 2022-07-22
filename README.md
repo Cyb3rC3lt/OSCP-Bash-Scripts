@@ -33,6 +33,7 @@ for link in `cat $(pwd)/results/${PWD##*/}/scans/tcp80/tcp_80_http_feroxbuster_d
 
 ```
 for link in `grep -v 403 $(pwd)/results/${PWD##*/}/scans/tcp80/tcp_80_http_feroxbuster_dirbuster.txt | awk -F ' ' '{print $5}' | awk 'BEGIN { ORS = " " } { print }'`; do IP=${PWD##*/};RED='\033[0;31m';NC='\033[0m';echo ${RED}$link;echo ${NC}; curl -m 1 $link; printf "\n";printf "\n";printf "===============================";printf "\n"; done
+```
 
 ## Simply extract an open port list
 
