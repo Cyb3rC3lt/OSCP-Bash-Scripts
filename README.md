@@ -14,7 +14,7 @@ To solve this I wrote the following scripts:
 ## Netcat open port query
 
 ````
-for i in $(echo 10.11.1.71|tr "," "\n"); do grep -E 'tcp\s+open' $(pwd)/scans/_full_tcp_nmap.txt | awk -F / '{print $1}' | awk 'BEGIN { ORS = "\n" } { print }' | xargs -i nc -w 3 -vn $i {}; done
+for i in $(echo ${PWD##*/|tr "," "\n"); do grep -E 'tcp\s+open' $(pwd)/scans/_full_tcp_nmap.txt | awk -F / '{print $1}' | awk 'BEGIN { ORS = "\n" } { print }' | xargs -i nc -w 3 -vn $i {}; done
 ````
 
 ## Curl all open ports
@@ -27,13 +27,13 @@ for port in `grep -E 'tcp\s+open' $(pwd)/scans/_full_tcp_nmap.txt | awk -F / '{p
 ## Curl all website pages found on port 80 (change port to suit)
 
 ```
-for link in `cat $(pwd)/scans/tcp80/tcp_80_http_feroxbuster_dirbuster.txt | awk -F ' ' '{print $5}' | awk 'BEGIN { ORS = " " } { print }'`; do IP=10.11.1.71;RED='\033[0;31m';NC='\033[0m';echo ${RED}$link;echo ${NC}; curl -m 1 $link; printf "\n";printf "\n";printf "===============================";printf "\n"; done
+for link in `cat $(pwd)/scans/tcp80/tcp_80_http_feroxbuster_dirbuster.txt | awk -F ' ' '{print $5}' | awk 'BEGIN { ORS = " " } { print }'`; do RED='\033[0;31m';NC='\033[0m';echo ${RED}$link;echo ${NC}; curl -m 1 $link; printf "\n";printf "\n";printf "===============================";printf "\n"; done
 ```
 
 ## Curl all website pages found but exclude pages that retured a 403
 
 ```
-for link in `grep -v 403 $(pwd)/scans/tcp80/tcp_80_http_feroxbuster_dirbuster.txt | awk -F ' ' '{print $5}' | awk 'BEGIN { ORS = " " } { print }'`; do IP=10.11.1.71;RED='\033[0;31m';NC='\033[0m';echo ${RED}$link;echo ${NC}; curl -m 1 $link; printf "\n";printf "\n";printf "===============================";printf "\n"; done
+for link in `grep -v 403 $(pwd)/scans/tcp80/tcp_80_http_feroxbuster_dirbuster.txt | awk -F ' ' '{print $5}' | awk 'BEGIN { ORS = " " } { print }'`; do RED='\033[0;31m';NC='\033[0m';echo ${RED}$link;echo ${NC}; curl -m 1 $link; printf "\n";printf "\n";printf "===============================";printf "\n"; done
 ```
 
 ## Simply extract an open port list
