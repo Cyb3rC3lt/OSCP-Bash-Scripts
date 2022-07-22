@@ -27,7 +27,7 @@ for port in `grep -E 'tcp\s+open' $(pwd)/scans/_full_tcp_nmap.txt | awk -F / '{p
 
 ```
 
-## Curl all website pages found on port 80 (change port to suit)
+## Curl all website pages found on port 80 which is handy if not too many. Change the port to suit.
 
 ```
 
