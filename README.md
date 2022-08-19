@@ -43,6 +43,14 @@ for link in `grep -v 403 $(pwd)/scans/tcp80/tcp_80_http_feroxbuster_dirbuster.tx
 
 ```
 
+## Curl the disallowed entries from robots.txt
+
+```
+
+for url in `grep -E 'Disallow:' robots.txt | awk '{print $2}'`; do RED='\033[0;31m';NC='\033[0m';echo ${RED}"http://"${PWD##*/}$url;echo ${NC};curl -s -m 2 ${PWD##*/}$url | grep -v "403 - Forbidden: Access is denied";printf "===============================";printf "\n"; done
+
+```
+
 ## Simply extract an open port list
 
 ```
