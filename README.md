@@ -27,7 +27,15 @@ for port in `grep -E 'tcp\s+open' $(pwd)/scans/_full_tcp_nmap.txt | awk -F / '{p
 
 ```
 
-## 3. Curl all website pages found on port 80 which is handy if not too many. Change the port to suit.
+## 3. Curl all website pages found but exclude pages that are CSS or returned a 403
+
+```
+
+for link in `grep -Ev '(403|.css)' $(pwd)/scans/tcp80/tcp_80_http_feroxbuster_dirbuster.txt | awk -F ' ' '{print $5}' | awk 'BEGIN { ORS = " " } { print }'`; do RED='\033[0;31m';NC='\033[0m';echo ${RED}$link;echo ${NC}; curl -m 2 $link; printf "\n";printf "\n";printf "===============================";printf "\n"; done
+
+``` 
+
+## 4. Curl all website pages found on port 80 which is handy if not too many. Change the port to suit.
 
 ```
 
@@ -35,13 +43,6 @@ for link in `cat $(pwd)/scans/tcp80/tcp_80_http_feroxbuster_dirbuster.txt | awk 
 
 ```
 
-## 4. Curl all website pages found but exclude pages that returned a 403
-
-```
-
-for link in `grep -v 403 $(pwd)/scans/tcp80/tcp_80_http_feroxbuster_dirbuster.txt | awk -F ' ' '{print $5}' | awk 'BEGIN { ORS = " " } { print }'`; do RED='\033[0;31m';NC='\033[0m';echo ${RED}$link;echo ${NC}; curl -m 2 $link; printf "\n";printf "\n";printf "===============================";printf "\n"; done
-
-```
 
 ## 5. Curl the disallowed entries from robots.txt
 
