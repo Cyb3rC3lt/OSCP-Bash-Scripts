@@ -11,7 +11,7 @@ The two processes I found I carried out a lot were the following:
 
 To solve this I wrote the following scripts:
 
-## Connect with Netcat to all open ports & output result
+## 1. Connect with Netcat to all open ports & output result
 
 ````
 
@@ -19,7 +19,7 @@ for i in $(echo ${PWD##*/}|tr "," "\n"); do grep -E 'tcp\s+open' $(pwd)/scans/_f
 
 ````
 
-## Curl all open ports
+## 2. Curl all open ports
 
 ```
 
@@ -27,7 +27,7 @@ for port in `grep -E 'tcp\s+open' $(pwd)/scans/_full_tcp_nmap.txt | awk -F / '{p
 
 ```
 
-## Curl all website pages found on port 80 which is handy if not too many. Change the port to suit.
+## 3. Curl all website pages found on port 80 which is handy if not too many. Change the port to suit.
 
 ```
 
@@ -35,7 +35,7 @@ for link in `cat $(pwd)/scans/tcp80/tcp_80_http_feroxbuster_dirbuster.txt | awk 
 
 ```
 
-## Curl all website pages found but exclude pages that returned a 403
+## 4. Curl all website pages found but exclude pages that returned a 403
 
 ```
 
@@ -43,7 +43,7 @@ for link in `grep -v 403 $(pwd)/scans/tcp80/tcp_80_http_feroxbuster_dirbuster.tx
 
 ```
 
-## Curl the disallowed entries from robots.txt
+## 5. Curl the disallowed entries from robots.txt
 
 ```
 
@@ -51,7 +51,7 @@ for url in `grep -E 'Disallow:' robots.txt | awk '{print $2}'`; do RED='\033[0;3
 
 ```
 
-## Simply extract an open port list
+## 6. Simply extract an open port list
 
 ```
 
